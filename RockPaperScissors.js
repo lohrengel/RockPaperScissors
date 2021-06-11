@@ -4,14 +4,21 @@ Have an array with rock, paper, scissors
 Pick a random element from array
 Store value in variable randomPick and return variable
 */
+let playerSelection = prompt('Rock, paper or scissors?');
+let computerSelection = computerPlay();
+let result = 'blank'
+let playerWon = 0
+let computerWon = 0
+let draw = 0
+
 
 function computerPlay() {
     let rpsArray = ['rock', 'paper', 'scissors'];
-    let randomPick = rpsArray[Math.floor(Math.random() * rpsArray.length)];
-    return randomPick;
+    let computerSelection = rpsArray[Math.floor(Math.random() * rpsArray.length)];
+    return computerSelection;
 }
 
-let result = 'blank'
+
 
 function playRound(playerSelection, computerSelection) {
     // your code here!
@@ -20,48 +27,52 @@ function playRound(playerSelection, computerSelection) {
     
     if (playerSelection === computerSelection) {
         result = "It's a draw!";
-        draw += 1;
+        draw++;
         return result;
     }
     else if (playerSelection == 'rock' && computerSelection == 'scissors') {
         result = 'You win! Rock beats scissors!';
-        playerWon += 1;
+        playerWon++;
         return result;
     }
     else if (playerSelection == 'paper' &&  computerSelection == 'rock'){
         result = 'You win! Paper beats rock';
-        playerWon += 1;
+        playerWon++;
         return result;
     }  
     else if ((playerSelection == 'scissors' && computerSelection == 'paper')) {
         result = 'You win! Scissors beat Paper';
-        playerWon += 1;
+        playerWon++;
         return result;
     } 
 
     else {
         result = 'You lose';
-        computerWon += 1;
+        computerWon++;
         return result;
     }
   }
 
  
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-
-let playerWon = 0
-let computerWon = 0
-let draw = 0
   
 function game() {
   
 let roundCounter = 0
   
 for (roundCounter = 0; roundCounter < 5; roundCounter++) {
+    playerSelection = prompt('Rock, paper or scissors?');
+    computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
     console.log(result);
       
+  }
+
+  if (playerWon > computerWon) {
+      console.log('You Won');
+  } else if (computerWon > playerWon) {
+      console.log('Computer Won!');
+  } else {
+      console.log("After 5 rounds its a tie");
   }
 }
  /* console.log(playRound(playerSelection, computerSelection));*/
